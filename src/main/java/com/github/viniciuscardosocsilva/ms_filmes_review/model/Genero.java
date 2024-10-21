@@ -1,4 +1,4 @@
-package model;
+package com.github.viniciuscardosocsilva.ms_filmes_review.model;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

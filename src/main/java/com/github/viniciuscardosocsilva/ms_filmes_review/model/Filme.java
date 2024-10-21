@@ -1,4 +1,4 @@
-package model;
+package com.github.viniciuscardosocsilva.ms_filmes_review.model;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -11,26 +11,28 @@ import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
-@Getter
 @Setter
+@Getter
 
 @Entity
-@Table(name = "tb_user")
-public class User {
+@Table(name = "tb_filme")
+public class Filme {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(nullable = false)
-    private String name;
+    private String titulo;
 
     @Column(nullable = false)
-    private String email;
+    private Integer ano;
 
-    @Column(nullable = false)
-    private String password;
-
-    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "filme", fetch = FetchType.EAGER)
     private List<Review> reviews = new ArrayList<>();
+
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "genero_id")
+    private Genero genero;
+
 }
