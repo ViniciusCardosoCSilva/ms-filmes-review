@@ -6,6 +6,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Setter
@@ -24,5 +27,12 @@ public class Filme {
 
     @Column(nullable = false)
     private Integer ano;
+
+    @OneToMany(mappedBy = "filme", fetch = FetchType.EAGER)
+    private List<Review> reviews = new ArrayList<>();
+
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "genero_id")
+    private Genero genero;
 
 }
